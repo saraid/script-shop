@@ -11530,6 +11530,7 @@ ARR_YES:
 	match %zHretreat Ranger
 	match SKIN1_PAUSE ...wait
 	match SKIN1_PAUSE type ahead
+put prep sop
 put arrange all
 	matchwait
 
@@ -11547,6 +11548,7 @@ ARR_FULL:
 	match %zHretreat Ranger
 	match SKIN1_PAUSE ...wait
 	match SKIN1_PAUSE type ahead
+put prep sop
 put arrange all
 	matchwait
 
@@ -11563,6 +11565,7 @@ ARR_FULL2:
 	match %zHretreat Ranger
 	match SKIN1_PAUSE ...wait
 	match SKIN1_PAUSE type ahead
+put prep sop
 put arrange all
 	matchwait
 
@@ -11585,6 +11588,7 @@ SKIN1B:
 	match SKIN1B_PAUSE ...wait
 	match SKIN1B_PAUSE type ahead
 	match SEARCH You can't do that.
+put prep sop
 put arrange other %zHkill all
 	matchwait
 
@@ -11795,6 +11799,7 @@ SKIN_GO:
 	match SKIN_GO_PAUSE ...wait
 	match SKIN_GO_PAUSE type ahead
 	match SKINNED .
+put cast
 put skin
 	matchwait
 
@@ -11810,6 +11815,7 @@ NO_KNIFE:
 	match NO_KNIFE_PAUSE ...wait
 	match NO_KNIFE_PAUSE type ahead
 	match NO_KNIFE_SKINNED .
+put cast
 put skin
 	matchwait
 
