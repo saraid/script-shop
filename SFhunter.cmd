@@ -11530,7 +11530,7 @@ ARR_YES:
 	match %zHretreat Ranger
 	match SKIN1_PAUSE ...wait
 	match SKIN1_PAUSE type ahead
-put arrange all
+put arrange
 	matchwait
 
 ARR_SKIN1_:
@@ -11547,7 +11547,7 @@ ARR_FULL:
 	match %zHretreat Ranger
 	match SKIN1_PAUSE ...wait
 	match SKIN1_PAUSE type ahead
-put arrange all
+put arrange
 	matchwait
 
 ARR_FULL2:
@@ -11563,7 +11563,7 @@ ARR_FULL2:
 	match %zHretreat Ranger
 	match SKIN1_PAUSE ...wait
 	match SKIN1_PAUSE type ahead
-put arrange all
+put arrange
 	matchwait
 
 ARR_SKIN_RETREAT:
@@ -11585,7 +11585,7 @@ SKIN1B:
 	match SKIN1B_PAUSE ...wait
 	match SKIN1B_PAUSE type ahead
 	match SEARCH You can't do that.
-put arrange other %zHkill all
+put arrange other %zHkill
 	matchwait
 
 
