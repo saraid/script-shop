@@ -11501,6 +11501,7 @@ ARR_YES:
 	match %zHretreat Ranger
 	match SKIN1_PAUSE ...wait
 	match SKIN1_PAUSE type ahead
+put prep sop
 put arrange all
 	matchwait
 
@@ -11728,6 +11729,7 @@ SKIN_GO:
 	match SKIN_GO_PAUSE ...wait
 	match SKIN_GO_PAUSE type ahead
 	match SKINNED .
+put cast
 put skin
 	matchwait
 
@@ -11743,6 +11745,7 @@ NO_KNIFE:
 	match NO_KNIFE_PAUSE ...wait
 	match NO_KNIFE_PAUSE type ahead
 	match NO_KNIFE_SKINNED .
+put cast
 put skin
 	matchwait
 
