@@ -11526,6 +11526,7 @@ ARR_YES:
 	match SKIN1B already been skinned
 	match SKIN1B You might want to kill it first
 	match SKIN1__PAUSE roundtime
+  match SKIN1__PAUSE already been arranged to some degree
 	match %zHretreat You don't have enough experience
 	match %zHretreat Ranger
 	match SKIN1_PAUSE ...wait
@@ -11543,7 +11544,8 @@ ARR_FULL:
 # End of Courtesy :-P
 	match SKIN1B already been skinned
 	match SKIN1B You might want to kill it first
-	match SKIN1__PAUSE roundtime
+  match SKIN1__PAUSE roundtime
+  match SKIN1__PAUSE already been arranged to some degree
 	match %zHretreat You don't have enough experience
 	match %zHretreat Ranger
 	match SKIN1_PAUSE ...wait
@@ -11560,7 +11562,8 @@ ARR_FULL2:
 # End of Courtesy :-P
 	match SKIN1B already been skinned
 	match SKIN1B You might want to kill it first
-	match SKIN1__PAUSE roundtime
+  match SKIN1__PAUSE roundtime
+  match SKIN1__PAUSE already been arranged to some degree
 	match %zHretreat You don't have enough experience
 	match %zHretreat Ranger
 	match SKIN1_PAUSE ...wait
@@ -11582,7 +11585,8 @@ SKIN1B:
 	echo
 	match %zHretreat You might want to kill it first
 	match SKIN_FAIL already been skinned
-	match SKIN1__PAUSE roundtime
+  match SKIN1__PAUSE roundtime
+  match SKIN1__PAUSE already been arranged to some degree
 	match %zHretreat You don't have enough experience
 	match %zHretreat Ranger
 	match SKIN1B_PAUSE ...wait
