@@ -14,7 +14,7 @@ echo
 put echo /off
 waitfor echo
 echo EZhunter
-echo Last tweak 4/10/2009 10:58PM
+echo Last tweak 5/25/2009 10:52PM
 echo
 echo SITE:  http://www.malific.com/ or http://www.geocities.com/malificdr/
 echo AIM:   Malific Drockmur
@@ -75,10 +75,11 @@ BEGIN:
 	echo BEGIN:
 	echo
 	match WEAPON_CHECK you draw
-	match WEAPON_CHECK re already
+	match WEAPON_CHECK re already h
 	match BEGIN_HANDS free hand
 	match WEAPON_CHECK free to
 	match BEGINA remove
+	match BEGINA arleady w
 	match BEGINA What were you
 	match BEGINA can't seem
 	match BEGINA Wield what?
@@ -146,7 +147,7 @@ DEBUG_MODE:
 	echo ***********************************************************
 	echo **
 	echo ** Copy/Paste DEBUG_MODE and LAST 3 Commands of game text
-	echo ** EZhunter DR2v1: Last tweak 4/10/2009 10:58PM
+	echo ** EZhunter DR2v1: Last tweak 5/25/2009 10:52PM
 	echo ** Variables:
 	echo **       1 = %1
 IF_2	echo **       2 = %2
@@ -333,10 +334,11 @@ BASTARD:
 	echo
 shift
 	match SWAPPABLE_%1 you draw
-	match SWAPPABLE_%1 re already
+	match SWAPPABLE_%1 re already h
 	match BEGIN_HANDS free hand
 	match SWAPPABLE_%1 free to
 	match SWAPPABLE_A remove
+	match SWAPPABLE_A already w
 	match SWAPPABLE_A What were you
 	match SWAPPABLE_A can't seem
 	match SWAPPABLE_A Wield what?
@@ -801,9 +803,10 @@ shift
 counter add 1900
 	match THROW_VARI you draw
 	match THROW_VARI free to
-	match THROW_VARI re already
+	match THROW_VARI re already h
 	match BEGIN_HANDS free hand
 	match THROW_EQUIP remove
+	match THROW_EQUIP already w
 	match THROW_EQUIP What were you
 	match THROW_EQUIP can't seem
 	match THROW_EQUIP Wield what?
@@ -2884,10 +2887,11 @@ BACK_EQUIP2:
 	echo BACK_EQUIP2:
 	echo
 	match BACK1 you draw
-	match BACK1 re already
+	match BACK1 re already h
 	match BEGIN_HANDS free hand
 	match BACK1 free to
 	match BACK_EQUIP2A remove
+	match BACK_EQUIP2A already w
 	match BACK_EQUIP2A What were you
 	match BACK_EQUIP2A can't seem
 	match BACK_EQUIP2A Wield what?
@@ -4973,7 +4977,7 @@ SL_DEATH:
 	match SL_LOAD s:
 	match SL_DEATH_PAUSE ...wait
 	match SL_DEATH_PAUSE type ahead
-put look other
+put look
 	matchwait
 
 
@@ -5355,7 +5359,7 @@ XB_DEATH:
 	match XB_LOAD s:
 	match XB_DEATH_PAUSE ...wait
 	match XB_DEATH_PAUSE type ahead
-put look other
+put look
 	matchwait
 
 
@@ -5774,7 +5778,7 @@ BOW_DEATH:
 	match BOW_LOAD s:
 	match BOW_DEATH_PAUSE ...wait
 	match BOW_DEATH_PAUSE type ahead
-put look other
+put look
 	matchwait
 
 
@@ -6968,10 +6972,11 @@ put circle
 	echo POACH_EQUIP:
 	echo
 	match POACH_APPRAISE you draw
-	match POACH_APPRAISE re already
+	match POACH_APPRAISE re already h
 	match BEGIN_HANDS free hand
 	match POACH_APPRAISE free to
 	match POACH_EQUIP2 remove
+	match POACH_EQUIP2 already w
 	match POACH_EQUIP2 What were you
 	match POACH_EQUIP2 can't seem
 	match POACH_EQUIP2 Wield what?
@@ -7575,7 +7580,7 @@ POACH_SL_DEATH:
 	match POACH_SL_LOAD s:
 	match POACH_SL_DEATH_PAUSE ...wait
 	match POACH_SL_DEATH_PAUSE type ahead
-put look other
+put look
 	matchwait
 
 POACH_SL_FAIL_PAUSE:
@@ -8110,7 +8115,7 @@ POACH_XB_DEATH:
 	match POACH_XB_LOAD s:
 	match POACH_XB_DEATH_PAUSE ...wait
 	match POACH_XB_DEATH_PAUSE type ahead
-put look other
+put look
 	matchwait
 
 POACH_XB_FAIL_PAUSE:
@@ -8648,7 +8653,7 @@ POACH_BOW_DEATH:
 	match POACH_BOW_LOAD s:
 	match POACH_BOW_DEATH_PAUSE ...wait
 	match POACH_BOW_DEATH_PAUSE type ahead
-put look other
+put look
 	matchwait
 
 POACH_BOW_FAIL_PAUSE:
@@ -8681,10 +8686,11 @@ put fire
 	echo SNIPE_EQUIP:
 	echo
 	match SNIPE_APPRAISE you draw
-	match SNIPE_APPRAISE re already
+	match SNIPE_APPRAISE re already h
 	match BEGIN_HANDS free hand
 	match SNIPE_APPRAISE free to
 	match SNIPE_EQUIP2 remove
+	match SNIPE_EQUIP2 already w
 	match SNIPE_EQUIP2 What were you
 	match SNIPE_EQUIP2 can't seem
 	match SNIPE_EQUIP2 Wield what?
@@ -9252,7 +9258,7 @@ SNIPE_XB_DEATH:
 	match SNIPE_XB_LOAD s:
 	match SNIPE_XB_DEATH_PAUSE ...wait
 	match SNIPE_XB_DEATH_PAUSE type ahead
-put look other
+put look
 	matchwait
 
 SNIPE_XB_FAIL_PAUSE:
@@ -9779,7 +9785,7 @@ SNIPE_BOW_DEATH:
 	match SNIPE_BOW_LOAD s:
 	match SNIPE_BOW_DEATH_PAUSE ...wait
 	match SNIPE_BOW_DEATH_PAUSE type ahead
-put look other
+put look
 	matchwait
 
 SNIPE_BOW_FAIL_PAUSE:
@@ -9819,10 +9825,11 @@ BRAWL_EQUIPMENT:
 	echo
 IF_2 goto BRAWL_EQUIP
 	IF_1 match BRAWL_APPRAISE you draw
-	IF_1 match BRAWL_APPRAISE re already
+	IF_1 match BRAWL_APPRAISE re already h
 	IF_1 match BEGIN_HANDS free hand
 	IF_1 match BRAWL_APPRAISE free to
 	IF_1 match BRAWL_EQUIPMENT2 remove
+	IF_1 match BRAWL_EQUIPMENT2 already w
 	IF_1 match BRAWL_EQUIPMENT2 What were you
 	IF_1 match BRAWL_EQUIPMENT2 can't seem
 	IF_1 match BRAWL_EQUIPMENT2 Wield what?
@@ -9849,10 +9856,11 @@ BRAWL_EQUIP:
 	echo BRAWL_EQUIP:
 	echo
 	match BRAWL_EQUIPS you draw
-	match BRAWL_EQUIPS re already
+	match BRAWL_EQUIPS re already h
 	match BEGIN_HANDS free hand
 	match BRAWL_EQUIPS free to
 	match BRAWL_EQUIPA remove
+	match BRAWL_EQUIPA already w
 	match BRAWL_EQUIPA What were you
 	match BRAWL_EQUIPA can't seem
 	match BRAWL_EQUIPA Wield what?
@@ -14362,7 +14370,7 @@ SL_DEATH_SF:
 	match SL_LOAD_SF s:
 	match SL_DEATH_PAUSE_SF ...wait
 	match SL_DEATH_PAUSE_SF type ahead
-put look other
+put look
 	matchwait
 
 
@@ -14710,7 +14718,7 @@ XB_DEATH_SF:
 	match XB_LOAD_SF s:
 	match XB_DEATH_PAUSE_SF ...wait
 	match XB_DEATH_PAUSE_SF type ahead
-put look other
+put look
 	matchwait
 
 
@@ -15055,7 +15063,7 @@ BOW_DEATH_SF:
 	match BOW_LOAD_SF s:
 	match BOW_DEATH_PAUSE_SF ...wait
 	match BOW_DEATH_PAUSE_SF type ahead
-put look other
+put look
 	matchwait
 
 
@@ -15529,7 +15537,7 @@ SF_POACH_SL_DEATH:
 	match SF_POACH_SL_LOAD s:
 	match SF_POACH_SL_DEATH_PAUSE ...wait
 	match SF_POACH_SL_DEATH_PAUSE type ahead
-put look other
+put look
 	matchwait
 
 SF_POACH_SL_FAIL_PAUSE:
@@ -16022,7 +16030,7 @@ SF_POACH_XB_DEATH:
 	match SF_POACH_XB_LOAD s:
 	match SF_POACH_XB_DEATH_PAUSE ...wait
 	match SF_POACH_XB_DEATH_PAUSE type ahead
-put look other
+put look
 	matchwait
 
 SF_POACH_XB_FAIL_PAUSE:
@@ -16388,7 +16396,7 @@ SF_POACH_BOW_DEATH:
 	match SF_POACH_BOW_LOAD s:
 	match SF_POACH_BOW_DEATH_PAUSE ...wait
 	match SF_POACH_BOW_DEATH_PAUSE type ahead
-put look other
+put look
 	matchwait
 
 SF_POACH_BOW_FAIL_PAUSE:
@@ -16877,7 +16885,7 @@ SF_SNIPE_XB_DEATH:
 	match SF_SNIPE_XB_LOAD s:
 	match SF_SNIPE_XB_DEATH_PAUSE ...wait
 	match SF_SNIPE_XB_DEATH_PAUSE type ahead
-put look other
+put look
 	matchwait
 
 SF_SNIPE_XB_FAIL_PAUSE:
@@ -17243,7 +17251,7 @@ SF_SNIPE_BOW_DEATH:
 	match SF_SNIPE_BOW_LOAD s:
 	match SF_SNIPE_BOW_DEATH_PAUSE ...wait
 	match SF_SNIPE_BOW_DEATH_PAUSE type ahead
-put look other
+put look
 	matchwait
 
 SF_SNIPE_BOW_FAIL_PAUSE:
@@ -20501,14 +20509,14 @@ MONSTERLIST:
 	echo
 GOTO MONSTER1
 
-## 31/32
+## 32/32
 MONSTER1:
 echo
 echo MONSTER1
 echo
 	match TROLL1 troll which appears dead
 	match GOBLIN1 goblin which appears dead
-	match HOG1 musk hog which appears dead
+	match HOG1 hog which appears dead
 	match MADMAN1 crazed madman which appears dead
 	match GRENDEL1 grendel which appears dead
 	match COUGAR1 cougar which appears dead
@@ -20533,11 +20541,12 @@ echo
 	match RAT1 rat which appears dead
 	match SPIDER1 wolf spider which appears dead
 	match BOOBRIE1 boobrie which appears dead
-	match MOTH1 MOTH which appears dead
-	match LARVA1 LARVA which appears dead
-	match WASP1 LARVA which appears dead
+	match MOTH1 moth which appears dead
+	match LARVA1 larva which appears dead
+	match WASP1 wasp which appears dead
+	match GRAVEROBBER1 graverobber which appears dead
 	match MONSTER2 s:
-put look other
+put look
 	matchwait
 
 
@@ -20578,7 +20587,7 @@ echo
 	match GHOUL2 ghoul which appears dead
 	match INKHORNE2 inkhorne which appears dead
 	match MONSTER3 s:
-put look other
+put look
 	matchwait
 ##TABLE FULL!  32/32
 MONSTER3:
@@ -20617,7 +20626,7 @@ echo
 	match SQUIRREL3 squirrel which appears dead
 	match ATIKET3 atik'et which appears dead
 	match MONSTER4 s:
-put look other
+put look
 	matchwait
 ## 32/32
 MONSTER4:
@@ -20648,7 +20657,7 @@ echo
 	match CLANCHIEF4 clan-chief which appears dead
 	match REIVER4 reiver which appears dead
 	match WARCAT4 warcat which appears dead
-	match CAIMAIN4 caimain which appears dead
+	match CAIMAN4 caiman which appears dead
 	match SCOUT4 scout which appears dead
 	match BANDIT4 bandit which appears dead
 	match BARGHEST4 barghest which appears dead
@@ -20656,7 +20665,7 @@ echo
 	match SAVAGE4 savage which appears dead
 	match LACH4 lach which appears dead
 	match MONSTER5 s:
-put look other
+put look
 	matchwait
 
 ## 31/32
@@ -20694,10 +20703,10 @@ echo
 	match GREMLIN5 gremlin which appears dead
 	match RAVEN5 raven which appears dead
 	match MONSTER6 s:
-put look other
+put look
 	matchwait
 
-## 28/32
+## 30/32
 MONSTER6:
 echo
 echo MONSTER6
@@ -20730,9 +20739,15 @@ echo
 	match MERROW6 merrow which appears dead
 	match IMP6 imp which appears dead
 	match BUCCA6 bucca which appears dead
+#Temporary
+	match MUTT6 mutt which appears dead
+	match PEON6 peon which appears dead
+	match RAKASH6 rakash which appears dead
+	match PRYDAEN6 prydaen which appears dead
+#END Temp
 	match MONSTER_FAIL s:
 	match MONSTER_DEAD which appears dead
-put look other
+put look
 	matchwait
 
 MONSTER_DEAD:
@@ -20744,6 +20759,10 @@ MONSTER_DEAD:
 	echo ** Found a dead monster but could **
 	echo ** NOT identify it. Please email  **
 	echo ** it to drockmali@hotmail.com    **
+	echo **                                **
+	echo ** Please include other monsters  **
+	echo ** in the area as well as if it   **
+	echo ** can be skinned or not.         **
 	echo ************************************
 	echo
 	goto S_%c
@@ -20845,6 +20864,14 @@ echo
 	save wasp
 	counter add 100000
 	goto S_%c
+
+GRAVEROBBER1:
+echo
+echo GRAVEROBBER1:
+echo
+	save graverobber
+	counter add 100000
+	goto SEARCH
 
 DRYAD1:
 echo
@@ -20948,7 +20975,7 @@ echo OGRE1:
 echo
 	counter add 100000
 	save ogre
-	goto S_%c
+	goto SEARCH
 
 BEAR1:
 echo
@@ -21664,11 +21691,11 @@ echo
 	counter add 400000
 	goto S_%c
 
-CAIMAIN4:
+CAIMAN4:
 echo
-echo CAIMAIN4:
+echo CAIMAN4:
 echo
-	save caimain
+	save caiman
 	counter add 400000
 	goto S_%c
 
@@ -21815,7 +21842,7 @@ echo SOUL5:
 echo
 	save soul
 	counter add 500000
-	goto S_%c
+	goto SEARCH
 
 HAFWA5:
 echo
@@ -21951,7 +21978,7 @@ echo OGRE5:
 echo
 	save ogre
 	counter add 500000
-	goto S_%c
+	goto SEARCH
 
 HOUND5:
 echo
@@ -22000,6 +22027,38 @@ echo
 	counter add 600000
 	save merrow
 	goto S_%c
+
+PRYDAEN6:
+echo
+echo PRYDAEN6:
+echo
+	counter add 600000
+	save prydaen
+	goto SEARCH
+
+RAKASH6:
+echo
+echo RAKASH6:
+echo
+	counter add 600000
+	save rakash
+	goto SEARCH
+
+MUTT6:
+echo
+echo MUTT6:
+echo
+	counter add 600000
+	save mutt
+	goto SEARCH
+
+PEON6:
+echo
+echo PEON6:
+echo
+	counter add 600000
+	save peon
+	goto SEARCH
 
 IMP6:
 echo
@@ -22071,7 +22130,7 @@ echo OGRE6:
 echo
 	counter add 600000
 	save ogre
-	goto S_%c
+	goto SEARCH
 
 GRYPHON6:
 echo
@@ -25423,7 +25482,7 @@ echo MONSTER_GROUP_1
 echo
 	match TROLL troll which appears dead
 	match GOBLIN goblin which appears dead
-	match HOG musk hog which appears dead
+	match HOG hog which appears dead
 	match MADMAN crazed madman which appears dead
 	match GRENDEL grendel which appears dead
 	match COUGAR cougar which appears dead
@@ -25451,8 +25510,9 @@ echo
 	match LARVA larva which appears dead
 	match MOTH moth which appears dead
 	match WASP wasp which appears dead
+	match GRAVEROBBER graverobber which appears dead
 	match MONSTER2 s:
-put look other
+put look
 	matchwait
 
 MONSTER1_F:
@@ -28719,7 +28779,7 @@ MONSTER_GROUP_2:
 	match POTHANIT croff pothanit which appears dead
 	match GHOUL ghoul which appears dead
 	match MONSTER2_F s:
-put look other
+put look
 	matchwait
 
 MONSTER2_F:
@@ -31987,7 +32047,7 @@ MONSTER_GROUP_3:
 	match SQUIRREL squirrel which appears dead
 	match ATIKET atik'et which appears dead
 	match MONSTER3_F s:
-put look other
+put look
 	matchwait
 
 MONSTER3_F:
@@ -35250,14 +35310,14 @@ MONSTER_GROUP_4:
 	match REIVER reiver which appears dead
 	match WARCAT warcat which appears dead
 	match SCOUT scout which appears dead
-	match CAIMAIN caimain which appears dead
+	match CAIMAN caiman which appears dead
 	match BANDIT bandit which appears dead
 	match BARGHEST barghest which appears dead
 	match HEADHUNTER headhunter which appears dead
 	match SAVAGE savage which appears dead
 	match LACH lach which appears dead
 	match MONSTER4_F s:
-put look other
+put look
 	matchwait
 
 MONSTER4_F:
@@ -38524,7 +38584,7 @@ MONSTER_GROUP_5:
 	match STEED steed which appears dead
 	match GREMLIN gremlin which appears dead
 	match MONSTER5_F s:
-put look other
+put look
 	matchwait
 
 MONSTER5_F:
@@ -41789,8 +41849,14 @@ MONSTER_GROUP_6:
 	match MERROW merrow which appears dead
 	match IMP imp which appears dead
 	match BUCCA bucca which appears dead
+#TEMP
+	match PRYDAEN prydaen which appears dead
+	match RAKASH rakash which appears dead
+	match MUTT mutt which appears dead
+	match PEON peon which appears dead
+#END TEMP
 	match MONSTER6_F s:
-put look other
+put look
 	matchwait
 
 MONSTER6_F:
@@ -45602,7 +45668,6 @@ echo
 echo SQUIRREL:
 echo
 	save squirrel
-
 	goto S_%c
 
 VULTURE:
@@ -45610,7 +45675,6 @@ echo
 echo VULTURE:
 echo
 	save vulture
-
 	goto S_%c
 
 KRA'HEI:
@@ -45618,7 +45682,6 @@ echo
 echo KRA'HEI:
 echo
 	save kra'hei
-
 	goto S_%c
 
 FENDRYAD:
@@ -45626,7 +45689,6 @@ echo
 echo FENDRYAD:
 echo
 	save fendryad
-
 	goto S_%c
 
 ELSRAEL:
@@ -45634,7 +45696,6 @@ echo
 echo ELSRAEL:
 echo
 	save elsrael
-
 	goto S_%c
 
 DYRACHIS:
@@ -45642,7 +45703,6 @@ echo
 echo DYRACHIS:
 echo
 	save dyrachis
-
 	goto S_%c
 
 LARVA:
@@ -45650,7 +45710,6 @@ echo
 echo LARVA:
 echo
 	save larva
-
 	goto S_%c
 
 WASP:
@@ -45658,8 +45717,15 @@ echo
 echo WASP:
 echo
 	save wasp
-
 	goto S_%c
+
+
+GRAVEROBBER:
+echo
+echo GRAVEROBBER:
+echo
+	save graverobber
+	goto SEARCH
 
 MOTH:
 echo
@@ -45869,11 +45935,11 @@ echo
 
 	goto S_%c
 
-CAIMAIN:
+CAIMAN:
 echo
-echo CAIMAIN:
+echo CAIMAN:
 echo
-	save caimain
+	save caiman
 
 	goto S_%c
 
@@ -45978,7 +46044,7 @@ echo SOUL:
 echo
 	save soul
 
-	goto S_%c
+	goto SEARCH
 
 HAFWA:
 echo
@@ -46079,7 +46145,7 @@ echo
 echo OGRE:
 echo
 	save ogre
-	goto S_%c
+	goto SEARCH
 
 
 SLUAGH:
@@ -46244,6 +46310,33 @@ echo
 	save merrow
 	goto S_%c
 
+PRYDAEN:
+echo
+echo PRYDAEN:
+echo
+	save prydaen
+	goto SEARCH
+
+RAKASH:
+echo
+echo RAKASH:
+echo
+	save rakash
+	goto SEARCH
+
+MUTT:
+echo
+echo MUTT:
+echo
+	save mutt
+	goto SEARCH
+
+PEON:
+echo
+echo PEON:
+echo
+	save peon
+	goto SEARCH
 IMP:
 echo
 echo IMP:
@@ -72116,6 +72209,7 @@ SKIN_STOW:
 	match SKIN_STOW_PAUSE type ahead
 	match NO_KNIFE out of reach
 	match NO_KNIFE remove
+	match NO_KNIFE already w
 	match NO_KNIFE What were you
 	match NO_KNIFE can't seem
 	match NO_KNIFE Wield what
@@ -72211,6 +72305,7 @@ SKIN_GO1:
 	match SKIN_GO1_PAUSE type ahead
 	match NO_KNIFE out of reach
 	match NO_KNIFE remove
+	match NO_KNIFE already w
 	match NO_KNIFE What were you
 	match NO_KNIFE can't seem
 	match NO_KNIFE Wield what
@@ -91829,9 +91924,9 @@ NOBUN2:
 	match DROP_TAIL tail in your left hand
 	match DROP_TUSK tusk in your left hand
 	match DROP_STRIPE stripe in your left hand
-	match DROP_SPINNER spinneret in your left hand
 	match DROP_TALON talon in your left hand
-	match DROP_CATGUT catgut in your left hand
+	match DROP_BEAK beak in your left hand
+	match DROP_MILK milk-tooth in your left hand
 	match DROP2 left hand.
 	match NOBUN2_PAUSE ...wait
 	match NOBUN2_PAUSE type ahead
@@ -91845,6 +91940,8 @@ DROP2:
 	echo
 	echo DROP2:
 	echo
+	match DROP_SPINNER spinneret in your left hand
+	match DROP_CATGUT catgut in your left hand
 	match DROP_QUILL quill in your left hand
 	match DROP_FANG fang in your left hand
 	match DROP_TOOTH tooth in your left hand
@@ -91857,7 +91954,6 @@ DROP2:
 	match DROP_EAR ears in your left hand
 	match DROP_FANG fangs in your left hand
 	match DROP_STINGER stinger in your left hand
-	match DROP_BEAK beak in your left hand
 #beaks not neccesary?
 	match DROP_BEAK beaks in your left hand
 	match SKIN_FAIL left hand.
@@ -91890,6 +91986,17 @@ BUNDONE:
 	match REMBUN you aren't holding that
 	match SKIN_RE_EQUIP you drop
 put drop my bun
+	matchwait
+
+DROP_MILK:
+	echo
+	echo DROP_MILK:
+	echo
+	match SKIN_RE_EQUIP You drop
+	match NOBUN2 What were you
+	match NOBUN2 could not
+	match NOBUN2 But you
+put drop my milk-tooth
 	matchwait
 
 DROP_BEAK:
@@ -92296,6 +92403,7 @@ SKIN_RE_EQUIP2:
 	match SKIN_RE_EQUIP2_PAUSE type ahead
 	match SKIN_RE_EQUIP3 What were you
 	match SKIN_RE_EQUIP3 REMOVE
+	match SKIN_RE_EQUIP3 already w
 	match SKIN_RE_EQUIP3 Wield what?
 	match SKIN_RE_EQUIP3 can't seem
 	match SKIN_RE_EQUIP3 You can only wield a weapon or a shield!
@@ -118281,7 +118389,7 @@ LOOTING:
 #Netzer	match LOOT_STONE  stone,
 #Netzer	match LOOT_BOX  box,
 #Netzer	match NO_LOOT Encumbrance :
-#Netzerput look other
+#Netzerput look
 #Netzerput encum
 #Netzer	matchwait
 	echo
@@ -118331,7 +118439,7 @@ LOOTING:
 	match LOOT_CARD  card.
 	match LOOT_COIN  coin
 	match LOOT_BOXES_PAUSE Encumbrance :
-put look other
+put look
 put encum
 	matchwait
 

@@ -17,7 +17,7 @@ echo
 put echo /off
 waitfor echo
 echo SFhunter Version 2
-echo Last tweak 4/16/2009 6:20PM
+echo Last tweak 5/25/2009 10:52PM
 echo
 echo SITE:  http://www.malific.com/ or http://www.geocities.com/malificdr/
 echo AIM:   Malific Drockmur
@@ -119,7 +119,8 @@ BEGIN:
 	match WEAPON_CHECK re already holding
 	match BEGIN_HANDS free hand
 	match WEAPON_CHECK free to
-	matchre BEGINA /out of reach|remove|What were you|can't seem|Wield what\?/i
+	matchre BEGINA /out of reach|remove|already w|What were you|can't seem/i
+	match VARI_CHECK Wield what?
 	match BEGINA You can only wield a weapon or a shield!
 	match BEGIN_PAUSE ...wait
 	match BEGIN_PAUSE type ahead
@@ -1015,9 +1016,9 @@ shift
 counter add 2200
 	match OFF_THROW_VARI you draw
 	match OFF_THROW_VARI free to
-	match OFF_THROW_VARI re already
+	match OFF_THROW_VARI re already h
 	match BEGIN_HANDS free hand
-	matchre OFF_THROW_EQUIP /out of reach|remove|What were you|can't seem|Wield what\?/i
+	matchre OFF_THROW_EQUIP /out of reach|remove|already w|What were you|can't seem|Wield what\?/i
 	match OFF_THROW_EQUIP You can only wield a weapon or a shield!
 put wield left my %1
 	matchwait
@@ -1026,7 +1027,7 @@ OFF_THROW_EQUIP:
 	echo
 	echo OFF_THROWN_EQUIP:
 	echo
-	match OFF_THROW_VARI you sling.
+	match OFF_THROW_VARI you sling
 	match OFF_THROW_VARI re already
 	match OFF_THROW_VARI inventory
 	match OFF_THROW_VARI you remove
@@ -1083,9 +1084,9 @@ shift
 counter add 1200
 	match THROW_VARI you draw
 	match THROW_VARI free to
-	match THROW_VARI re already
+	match THROW_VARI re already h
 	match BEGIN_HANDS free hand
-	matchre THROW_EQUIP /out of reach|remove|What were you|can't seem|Wield what\?/i
+	matchre THROW_EQUIP /out of reach|remove|already w|What were you|can't seem|Wield what\?/i
 	match THROW_BRAWL You can only wield a weapon or a shield!
 put wield right my %1
 	matchwait
@@ -1096,7 +1097,7 @@ THROW_EQUIP:
 	echo
 	echo THROWN_EQUIP:
 	echo
-	match THROW_VARI you sling.
+	match THROW_VARI you sling
 	match THROW_VARI re already
 	match THROW_VARI inventory
 	match THROW_VARI you remove
@@ -1275,6 +1276,7 @@ setvariable zHexpB ON
 counter add 1000
 	match AMB_THIEF Guild: Thief
 	match BEGIN Wealth:
+	match BEGIN Coins:
 put info
 	matchwait
 
@@ -1600,10 +1602,10 @@ BASTARD:
 	echo
 shift
 	match SWAPPABLE_%1 you draw
-	match SWAPPABLE_%1 re already
+	match SWAPPABLE_%1 re already h
 	match BEGIN_HANDS free hand
 	match SWAPPABLE_%1 free to
-	matchre SWAPPABLE_A /out of reach|remove|What were you|can't seem|Wield what\?/i
+	matchre SWAPPABLE_A /out of reach|remove|already w|What were you|can't seem|Wield what\?/i
 	match LABELERROR You can only wield a weapon or a shield!
 put wield right my %2
 	matchwait
@@ -1826,7 +1828,7 @@ MAGIC_EQUIP:
 	match M_WEAPON_CHECK re already holding
 	match BEGIN_HANDS free hand
 	match M_WEAPON_CHECK free to
-	matchre M_BEGINA /out of reach|remove|What were you|can't seem|Wield what\?/i
+	matchre M_BEGINA /out of reach|remove|already w|What were you|can't seem|Wield what\?/i
 	match M_VARI_CHECK You can only wield a weapon or a shield!
 	match MAGIC_EQUIP_PAUSE ...wait
 put wield right my %1
@@ -1955,10 +1957,10 @@ M_BASTARD:
 	echo
 shift
 	match M_SWAPPABLE_%1 you draw
-	match M_SWAPPABLE_%1 re already
+	match M_SWAPPABLE_%1 re already h
 	match BEGIN_HANDS free hand
 	match M_SWAPPABLE_%1 free to
-	matchre M_SWAPPABLE_A /out of reach|remove|What were you|can't seem|Wield what\?/i
+	matchre M_SWAPPABLE_A /out of reach|remove|already w|What were you|can't seem|Wield what\?/i
 	match LABELERROR You can only wield a weapon or a shield!
 put wield right my %2
 	matchwait
@@ -3146,7 +3148,7 @@ DEF1_EQUIP_OFFHAND:
 	echo DEF1_EQUIP_OFFHAND:
 	echo
 	matchre DEF1_OFFHAND_SWAP /you draw|re already holding|free to/i
-	matchre DEF1_OFFHAND2 /out of reach|What were you|REMOVE|Wield what|can't seem|You can only wield a weapon or a shield/i
+	matchre DEF1_OFFHAND2 /out of reach|What were you|remove|already w|Wield what|can't seem|You can only wield a weapon or a shield/i
 	matchre DEF1_EQUIP_OFFHAND_PAUSE /\.\.\.wait|type ahead/i
 	match BEGIN_HANDS free hand
 put wield left my %1
@@ -3202,7 +3204,7 @@ DEF1_EQUIP_0:
 	echo DEF1_EQUIP_0:
 	echo
 	matchre DEF2 /you draw|re already holding|free to/i
-	matchre DEF1_EQUIP3 /out of reach|What were you|REMOVE|Wield what|can't seem|You can only wield a weapon or a shield/i
+	matchre DEF1_EQUIP3 /out of reach|What were you|remove|already w|Wield what|can't seem|You can only wield a weapon or a shield/i
 	matchre DEF1_EQUIP_0_PAUSE /\.\.\.wait|type ahead/i
 	match BEGIN_HANDS free hand
 put wield right my %1
@@ -3946,7 +3948,8 @@ REPEAT_LOAD_RETREAT:
 	echo
 	echo REPEAT_LOAD_RETREAT:
 	echo
-	matchre REPEAT_PUSH /You cannot back away from a chance to continue your slaughter|You retreat |re already|You think|roundtime|You sneak back/i
+	matchre REPEAT_LOAD /You cannot back away from a chance to continue your slaughter|You retreat |re already|roundtime|You sneak back/i
+	match RANGE_FIRE You think
 	matchre RANGE_RETREAT_PAUSE /stop advancing|\.\.\.wait|type ahead|\[You're/i
 	match FATIGUE_STAND You must stand first.
 put retreat
@@ -4239,7 +4242,8 @@ RANGE_RETREAT:
 	echo
 	echo RANGE_RETREAT:
 	echo
-	matchre RANGE_%zHrange%_AIM /You cannot back away from a chance to continue your slaughter|You retreat |re already|You think|roundtime|You sneak back/i
+	matchre RANGE_%zHrange%_AIM /You cannot back away from a chance to continue your slaughter|You retreat |re already|roundtime|You sneak back/i
+	match RANGE_FIRE You Think
 	matchre RANGE_RETREAT_PAUSE /stop advancing|\.\.\.wait|type ahead|\[You're/i
 	match FATIGUE_STAND You must stand first.
 put retreat
@@ -4252,7 +4256,8 @@ REPEAT_RETREAT:
 	echo
 	echo RANGE_RETREAT:
 	echo
-	matchre REPEAT_PUSH /You cannot back away from a chance to continue your slaughter|You retreat |re already|You think|roundtime|You sneak back/i
+	matchre REPEAT_PUSH /You cannot back away from a chance to continue your slaughter|You retreat |re already|roundtime|You sneak back/i
+	match RANGE_FIRE You Think
 	matchre REPEAT_RETREAT_PAUSE /stop advancing|\.\.\.wait|type ahead|\[You're/i
 	match FATIGUE_STAND You must stand first.
 put retreat
@@ -4333,7 +4338,7 @@ RANGE_DEATH:
 	matchre %zHrepeat%_DEAD_LOAD /paths:|exits:|and you can't see a thing|Your world is a crimson haze/i
 	match RANGE_DEATH_PAUSE ...wait
 	match RANGE_DEATH_PAUSE type ahead
-put look other
+put look
 	matchwait
 
 REPEAT_DEAD_LOAD:
@@ -4632,7 +4637,8 @@ SNAP_REPEAT_LOAD_RETREAT:
 	echo
 	echo SNAP_REPEAT_LOAD_RETREAT:
 	echo
-	matchre SNAP_REPEAT_PUSH /You cannot back away from a chance to continue your slaughter|You retreat |re already|You think|roundtime|You sneak back/i
+	matchre SNAP_REPEAT_LOAD /You cannot back away from a chance to continue your slaughter|You retreat |re already|roundtime|You sneak back/i
+	match SNAP_FIRE You think
 	matchre SNAP_RANGE_LOAD_RETREAT_PAUSE /stop advancing|\.\.\.wait|type ahead|\[You're/i
 	match FATIGUE_STAND You must stand first.
 put retreat
@@ -4944,7 +4950,8 @@ SNAP_RETREAT:
 	echo
 	echo SNAP_RETREAT:
 	echo
-	matchre SNAP_%zHrange%_AIM /You cannot back away from a chance to continue your slaughter|You retreat |re already|You think|roundtime|You sneak back/i
+	matchre SNAP_%zHrange%_AIM /You cannot back away from a chance to continue your slaughter|You retreat |re already|roundtime|You sneak back/i
+	match SNAP_FIRE You think
 	matchre SNAP_RETREAT_PAUSE /stop advancing|\.\.\.wait|type ahead|\[You're/i
 	match FATIGUE_STAND You must stand first.
 put retreat
@@ -5015,7 +5022,7 @@ SNAP_DEATH:
 	matchre SNAP_%zHrepeat%_LOAD_PAUSE /paths:|exits:|and you can't see a thing|Your world is a crimson haze/i
 	match SNAP_DEATH_PAUSE ...wait
 	match SNAP_DEATH_PAUSE type ahead
-put look other
+put look
 	matchwait
 
 SNAP_2_AIM_PAUSE:
@@ -6547,9 +6554,9 @@ BACK_EQUIP2:
 	echo
 	echo BACK_EQUIP2:
 	echo
-	matchre BACK1 /you draw|re already|free to/i
+	matchre BACK1 /you draw|re already h|free to/i
 	match BEGIN_HANDS free hand
-	matchre BACK_EQUIP2A /out of reach|remove|What were you|can't seem|Wield what\?/i
+	matchre BACK_EQUIP2A /out of reach|remove|already w|What were you|can't seem|Wield what\?/i
 	matchre BACK_EQUIP2_PAUSE /\.\.\.wait|type ahead/i
 put wield right my %1
 	matchwait
@@ -7562,7 +7569,7 @@ IF_2 goto EMPATH_EQUIP
 	IF_1 match EMPATH_APPRAISE re already holding
 	IF_1 match BEGIN_HANDS free hand
 	IF_1 match EMPATH_APPRAISE free to
-	IF_1 matchre EMPATH_E2 /out of reach|remove|What were you|can't seem|Wield what\?/i
+	IF_1 matchre EMPATH_E2 /out of reach|remove|already w|What were you|can't seem|Wield what\?/i
 	IF_1 match EMPATH_E2 You can only wield a weapon or a shield!
 IF_1 put wield right my %1
 	IF_1 matchwait
@@ -7628,7 +7635,7 @@ EMPATH_EQUIP2:
 	match EMP_BRAWL re already holding
 	match BEGIN_HANDS free hand
 	match EMP_BRAWL free to
-	matchre EMPATH_EQUIP3 /out of reach|remove|What were you|can't seem|Wield what\?/i
+	matchre EMPATH_EQUIP3 /out of reach|remove|already w|What were you|can't seem|Wield what\?/i
 	match BEGIN_NOWEAP You can only wield a weapon or a shield!
 	match EMPATH_EQUIP2_PAUSE ...wait
 	match EMPATH_EQUIP2_PAUSE type ahead
@@ -7709,7 +7716,7 @@ IF_2 goto BRAWL_EQUIP
 	IF_1 match BRAWL_APPRAISE re already holding
 	IF_1 match BEGIN_HANDS free hand
 	IF_1 match BRAWL_APPRAISE free to
-	IF_1 matchre BRAWL_E2 /out of reach|remove|What were you|can't seem|Wield what\?/i
+	IF_1 matchre BRAWL_E2 /out of reach|remove|already w|What were you|can't seem|Wield what\?/i
 	IF_1 match BRAWL_E2 You can only wield a weapon or a shield!
 IF_1 put wield right my %1
 	IF_1 matchwait
@@ -7776,7 +7783,7 @@ BRAWL_EQUIP2:
 	match BRA_BRAWL re already holding
 	match BEGIN_HANDS free hand
 	match BRA_BRAWL free to
-	matchre BRAWL_EQUIP3 /out of reach|remove|What were you|can't seem|Wield what\?/i
+	matchre BRAWL_EQUIP3 /out of reach|remove|already w|What were you|can't seem|Wield what\?/i
 	match BEGIN_NOWEAP You can only wield a weapon or a shield!
 	match BRAWL_EQUIP2_PAUSE ...wait
 	match BRAWL_EQUIP2_PAUSE type ahead
@@ -9433,7 +9440,7 @@ MAGIC_RETREAT:
 	echo
 	echo MAGIC_RETREAT:
 	echo
-	matchre MAGIC_DEATH_ON /You cannot back away from a chance to continue your slaughter|You retreat |re already|You think|roundtime|You sneak back/i
+	matchre MAGIC_DEATH_ON /You cannot back away from a chance to continue your slaughter|You retreat |re already|roundtime|You sneak back/i
 	matchre MAGIC_RETREAT_PAUSE /stop advancing|\.\.\.wait|type ahead/i
 	match STUN stunned
 	match FATIGUE_STAND You must stand first.
@@ -9454,7 +9461,7 @@ MAGIC_DEATH_OFF:
 	match MAGIC_DEATH_OFF_PAUSE ...wait
 	match MAGIC_DEATH_OFF_PAUSE type ahead
 	match STUN stunned
-put look other
+put look
 	matchwait
 
 MAGIC_DEATH_ON_PAUSE:
@@ -9465,7 +9472,7 @@ MAGIC_DEATH_ON:
 	match MAGIC_DEATH_ON_PAUSE ...wait
 	match MAGIC_DEATH_ON_PAUSE type ahead
 	match STUN stunned
-put look other
+put look
 	matchwait
 
 MAGIC_COMBAT:
@@ -9629,7 +9636,7 @@ SN_MAGIC_RETREAT:
 	echo
 	echo SN_MAGIC_RETREAT:
 	echo
-	matchre SN_MAGIC_DEATH /You cannot back away from a chance to continue your slaughter|You retreat from combat|re already|You think|You sneak back/i
+	matchre SN_MAGIC_DEATH /You cannot back away from a chance to continue your slaughter|You retreat from combat|re already|You sneak back/i
 	match SN_MAGIC_DEATH_PAUSE roundtime
 	matchre SN_MAGIC_RETREAT_PAUSE /stop advancing|\.\.\.wait|type ahead/i
 	match STUN stunned
@@ -9651,7 +9658,7 @@ SN_MAGIC_DEATH:
 	match SN_MAGIC_DEATH_PAUSE ...wait
 	match SN_MAGIC_DEATH_PAUSE type ahead
 	match STUN stunned
-put look other
+put look
 	matchwait
 
 SN_MAGIC_COMBAT:
@@ -9687,6 +9694,7 @@ counter set %zHcounter
 
 goto %zHmonster
 
+Monster_list:
 Monsterlist:
 %EZmonster:
 %zHmonster:
@@ -9699,7 +9707,7 @@ echo
 setvariable zHmonster MONSTER1B
 	matchre TROLL_2 /wood troll (which appears dead|\(dead\))/i
 	matchre GOBLIN /goblin (which appears dead|\(dead\))/i
-	matchre HOG /musk hog (which appears dead|\(dead\))/i
+	matchre HOG /hog (which appears dead|\(dead\))/i
 	matchre MADMAN /crazed madman (which appears dead|\(dead\))/i
 	matchre GRENDEL /grendel (which appears dead|\(dead\))/i
 	matchre COUGAR /cougar (which appears dead|\(dead\))/i
@@ -9728,9 +9736,10 @@ setvariable zHmonster MONSTER1B
 	matchre MOTH /moth (which appears dead|\(dead\))/i
 	matchre LARVA /larva (which appears dead|\(dead\))/i
 	matchre WASP /wasp (which appears dead|\(dead\))/i
+	matchre GRAVEROBBER /graverobber (which appears dead|\(dead\))/i
 	matchre MONSTER2 /paths:|exits:/i
 	matchre SKIN_VARI_CHECK /and you can't see a thing|Your world is a crimson haze/i
-put look other
+put look
 	matchwait
 
 # 32/32
@@ -9773,7 +9782,7 @@ setvariable zHmonster MONSTER2B
 	matchre INKHORNE /inkhorne (which appears dead|\(dead\))/i
 	matchre MONSTER3 /paths:|exits:/i
 	matchre SKIN_VARI_CHECK /and you can't see a thing|Your world is a crimson haze/i
-put look other
+put look
 	matchwait
 
 # 32/32
@@ -9815,7 +9824,7 @@ setvariable zHmonster MONSTER3B
 	matchre ATIKET /atik'et (which appears dead|\(dead\))/i
 	matchre MONSTER4 /paths:|exits:/i
 	matchre SKIN_VARI_CHECK /and you can't see a thing|Your world is a crimson haze/i
-put look other
+put look
 	matchwait
 #33/32
 MONSTER4:
@@ -9848,7 +9857,7 @@ setvariable zHmonster MONSTER4B
 	matchre CLANCHIEF /raider (which appears dead|\(dead\))/i
 	matchre REIVER /reiver (which appears dead|\(dead\))/i
 	matchre WARCAT /warcat (which appears dead|\(dead\))/i
-	matchre CAIMAIN /caimain (which appears dead|\(dead\))/i
+	matchre CAIMAN /caiman (which appears dead|\(dead\))/i
 	matchre SCOUT /scout (which appears dead|\(dead\))/i
 	matchre BANDIT /bandit (which appears dead|\(dead\))/i
 	matchre BARGHEST /barghest (which appears dead|\(dead\))/i
@@ -9857,7 +9866,7 @@ setvariable zHmonster MONSTER4B
 	matchre LACH /lach (which appears dead|\(dead\))/i
 	matchre MONSTER5 /paths:|exits:/i
 	matchre SKIN_VARI_CHECK /and you can't see a thing|Your world is a crimson haze/i
-put look other
+put look
 	matchwait
 # 31/32
 MONSTER5:
@@ -9897,10 +9906,10 @@ setvariable zHmonster MONSTER5B
 	matchre RAVEN /raven (which appears dead|\(dead\))/i
 	matchre MONSTER6 /paths:|exits:/i
 	matchre SKIN_VARI_CHECK /and you can't see a thing|Your world is a crimson haze/i
-put look other
+put look
 	matchwait
 
-# 30/32
+# 32/32
 MONSTER6:
 MONSTER_GROUP_6:
 echo
@@ -9935,10 +9944,17 @@ setvariable zHmonster MONSTER6B
 	matchre MERROW /merrow (which appears dead|\(dead\))/i
 	matchre IMP /imp (which appears dead|\(dead\))/i
 	matchre BUCCA /bucca (which appears dead|\(dead\))/i
+#temporary
+
+	matchre PRYDAEN /prydaen (which appears dead|\(dead\))/i
+	matchre RAKASH /rakash (which appears dead|\(dead\))/i
+	matchre MUTT /mutt (which appears dead|\(dead\))/i
+	matchre PEON /peon (which appears dead|\(dead\))/i
+#END Temp
 	matchre MONSTER_FAIL /paths:|exits:/i
 	matchre MONSTER_DEAD /(which appears dead|\(dead\))/i
 	matchre SKIN_VARI_CHECK /and you can't see a thing|Your world is a crimson haze/i
-put look other
+put look
 	matchwait
 
 MONSTER1B:
@@ -9947,7 +9963,7 @@ echo MONSTER1B:
 echo
 	matchre TROLL_2 /wood troll (which appears dead|\(dead\))/i
 	matchre GOBLIN /goblin (which appears dead|\(dead\))/i
-	matchre HOG /musk hog (which appears dead|\(dead\))/i
+	matchre HOG /hog (which appears dead|\(dead\))/i
 	matchre MADMAN /crazed madman (which appears dead|\(dead\))/i
 	matchre GRENDEL /grendel (which appears dead|\(dead\))/i
 	matchre COUGAR /cougar (which appears dead|\(dead\))/i
@@ -9976,9 +9992,10 @@ echo
 	matchre MOTH /moth (which appears dead|\(dead\))/i
 	matchre LARVA /larva (which appears dead|\(dead\))/i
 	matchre WASP /wasp (which appears dead|\(dead\))/i
+	matchre GRAVEROBBER /graverobber (which appears dead|\(dead\))/i
 	matchre MONSTER2 /paths:|exits:/i
 	matchre SKIN_VARI_CHECK /and you can't see a thing|Your world is a crimson haze/i
-put look other
+put look
 	matchwait
 
 # 32/32
@@ -10019,7 +10036,7 @@ echo
 	matchre INKHORNE /inkhorne (which appears dead|\(dead\))/i
 	matchre MONSTER1 /paths:|exits:/i
 	matchre SKIN_VARI_CHECK /and you can't see a thing|Your world is a crimson haze/i
-put look other
+put look
 	matchwait
 
 MONSTER3B:
@@ -10058,7 +10075,7 @@ echo
 	matchre ATIKET /atik'et (which appears dead|\(dead\))/i
 	matchre MONSTER1 /paths:|exits:/i
 	matchre SKIN_VARI_CHECK /and you can't see a thing|Your world is a crimson haze/i
-put look other
+put look
 	matchwait
 
 MONSTER4B:
@@ -10089,7 +10106,7 @@ echo
 	matchre CLANCHIEF /raider (which appears dead|\(dead\))/i
 	matchre REIVER /reiver (which appears dead|\(dead\))/i
 	matchre WARCAT /warcat (which appears dead|\(dead\))/i
-	matchre CAIMAIN /caimain (which appears dead|\(dead\))/i
+	matchre CAIMAN /caiman (which appears dead|\(dead\))/i
 	matchre SCOUT /scout (which appears dead|\(dead\))/i
 	matchre BANDIT /bandit (which appears dead|\(dead\))/i
 	matchre BARGHEST /barghest (which appears dead|\(dead\))/i
@@ -10098,7 +10115,7 @@ echo
 	matchre LACH /lach (which appears dead|\(dead\))/i
 	matchre MONSTER1 /paths:|exits:/i
 	matchre SKIN_VARI_CHECK /and you can't see a thing|Your world is a crimson haze/i
-put look other
+put look
 	matchwait
 
 MONSTER5B:
@@ -10136,7 +10153,7 @@ echo
 	matchre RAVEN /raven (which appears dead|\(dead\))/i
 	matchre MONSTER6B /paths:|exits:/i
 	matchre SKIN_VARI_CHECK /and you can't see a thing|Your world is a crimson haze/i
-put look other
+put look
 	matchwait
 
 MONSTER6B:
@@ -10171,9 +10188,11 @@ echo
 	matchre MERROW /merrow (which appears dead|\(dead\))/i
 	matchre IMP /imp (which appears dead|\(dead\))/i
 	matchre BUCCA /bucca (which appears dead|\(dead\))/i
+	matchre MUTT /mutt (which appears dead|\(dead\))/i
+	matchre PEON /peon (which appears dead|\(dead\))/i
 	matchre MONSTER1 /paths:|exits:/i
 	matchre SKIN_VARI_CHECK /and you can't see a thing|Your world is a crimson haze/i
-put look other
+put look
 	matchwait
 
 MONSTER_DEAD:
@@ -10186,6 +10205,10 @@ setvariable zHmonster MONSTER1
 	echo ** Found a dead monster but could **
 	echo ** NOT identify it. Please email  **
 	echo ** it to drockmali@hotmail.com    **
+	echo **                                **
+	echo ** Please include other monsters  **
+	echo ** in the area as well as if it   **
+	echo ** can be skinned or not.         **
 	echo ************************************
 	echo
 	goto SKIN_VARI_CHECK
@@ -10201,6 +10224,34 @@ setvariable zHmonster MONSTER1
 	echo ************************************
 	echo
 	goto NO_LOOT
+
+PRYDAEN:
+echo
+echo PRYDAEN:
+echo
+	setvariable zHkill prydaen
+	goto SEARCH
+
+RAKASH:
+echo
+echo RAKASH:
+echo
+	setvariable zHkill rakash
+	goto SEARCH
+
+PEON:
+echo
+echo PEON:
+echo
+	setvariable zHkill peon
+	goto SEARCH
+
+MUTT:
+echo
+echo MUTT:
+echo
+	setvariable zHkill mutt
+	goto SEARCH
 
 IMP:
 echo
@@ -10464,7 +10515,7 @@ echo
 
 
 	setvariable zHkill ogre
-	goto SKIN_VARI_CHECK
+	goto SEARCH
 
 BEAR:
 echo
@@ -10933,6 +10984,14 @@ echo
 
 	goto SKIN_VARI_CHECK
 
+GRAVEROBBER:
+echo
+echo GRAVEROBBER:
+echo
+	setvariable zHkill graverobber
+
+	goto SEARCH
+
 CROCODILE:
 echo
 echo CROCODILE:
@@ -11125,11 +11184,11 @@ echo
 
 	goto SKIN_VARI_CHECK
 
-CAIMAIN:
+CAIMAN:
 echo
-echo CAIMAIN:
+echo CAIMAN:
 echo
-	setvariable zHkill caimain
+	setvariable zHkill caiman
 
 	goto SKIN_VARI_CHECK
 
@@ -11194,7 +11253,7 @@ echo
 	match SEARCH_NEXT not dead
 	match SEARCH_NEXT It's still alive
 	match NO_LOOT picked clean
-	match NO_LOOT It carried nothing of interest.
+	match NO_LOOT nothing of interest.
 	match LOOT_LOOK You search
 	match LOOT_LOOK roundtime
 	match GUARDIAN_PAUSE ...wait
@@ -11217,7 +11276,7 @@ echo SOUL:
 echo
 	setvariable zHkill soul
 
-	goto SKIN_VARI_CHECK
+	goto SEARCH
 
 HAFWA:
 echo
@@ -11494,8 +11553,10 @@ goto %zHarrange
 
 ARR_YES:
 	match %zHretreat you can't
+	match SEARCH cannot be skinned
 	match SKIN1B already been skinned
 	match SKIN1B You might want to kill it first
+	match SKIN1__PAUSE has already
 	match SKIN1__PAUSE roundtime
 	match %zHretreat You don't have enough experience
 	match %zHretreat Ranger
@@ -11512,14 +11573,16 @@ SKIN1B:
 	echo SKIN1B:
 	echo
 	match %zHretreat You might want to kill it first
+	match SEARCH cannot be skinned
 	match SKIN_FAIL already been skinned
+	match SKIN1__PAUSE has already
 	match SKIN1__PAUSE roundtime
 	match %zHretreat You don't have enough experience
 	match %zHretreat Ranger
 	match SKIN1B_PAUSE ...wait
 	match SKIN1B_PAUSE type ahead
 	match SEARCH You can't do that.
-put arrange other %zHkill
+put arrange other %zHkill all
 	matchwait
 
 
@@ -11590,7 +11653,7 @@ SKIN_BRAWLTYPE_SHIELD:
 	match SKIN_STOWA already holding
 	match SKIN_BRAWLTYPE_SHIELD_PAUSE ...wait
 	match SKIN_BRAWLTYPE_SHIELD_PAUSE type ahead
-	matchre NO_KNIFE /out of reach|remove|What were you|can't seem|Wield what\?/i
+	matchre NO_KNIFE /out of reach|remove|already w|What were you|can't seem|Wield what\?/i
 put wield right my knife
 	matchwait
 
@@ -11603,7 +11666,7 @@ SKINTYPE_0:
 	match SKIN_SWAP1 already holding
 	match SKIN_TYPE_PAUSE ...wait
 	match SKIN_TYPE_PAUSE type ahead
-	matchre NO_KNIFE /out of reach|remove|What were you|can't seem|Wield what\?/i
+	matchre NO_KNIFE /out of reach|remove|already w|What were you|can't seem|Wield what\?/i
 put wield left my knife
 	matchwait
 
@@ -11616,7 +11679,7 @@ SKINTYPE_OFFHAND:
 	match SKIN_OFF_PAUSE ...wait
 	match SKIN_OFF_PAUSE type ahead
 	match SKINTYPE_0 You need to have your right hand free to draw your 
-	matchre NO_KNIFE /out of reach|remove|What were you|can't seem|Wield what\?/i
+	matchre NO_KNIFE /out of reach|remove|already w|What were you|can't seem|Wield what\?/i
 put wield right my knife
 	matchwait
 
@@ -11702,7 +11765,7 @@ SKIN_GO1:
 	match SKIN_GO2 already holding
 	match SKIN_GO1_PAUSE ...wait
 	match SKIN_GO1_PAUSE type ahead
-	matchre NO_KNIFE /out of reach|remove|What were you|can't seem|Wield what\?/i
+	matchre NO_KNIFE /out of reach|remove|already w|What were you|can't seem|Wield what\?/i
 put wield left my knife
 	matchwait
 
@@ -12002,6 +12065,7 @@ NOBUN2:
 	echo NOBUN2:
 	echo
 	matchre SKIN_FAIL /nothing in your left hand|your empty hands./i
+	match DROP_MILK milk-tooth in your left hand
 	matchre DROP_WING /wing in your left hand|wings in your left hand/i
 	matchre DROP_FEATHER /feather in your left hand|feathers in your left hand/i
 	matchre DROP_SHELL /shell in your left hand|shells in your left hand/i
@@ -12067,6 +12131,13 @@ BUNDONE:
 	match SKIN_RE_EQUIP you drop
 put drop my bun
 	matchwait
+
+DROP_MILK:
+	echo
+	echo DROP_MILK:
+	echo
+setvariable zHskin2 milk-tooth
+goto DROP2
 
 DROP_BEAK:
 	echo
@@ -12354,9 +12425,9 @@ K_SKIN_RE_EQUIP_OFFHAND:
 	echo
 	match KO_SEARCH you draw
 	match KO_SEARCH free to
-	match KO_SEARCH re already
+	match KO_SEARCH re already h
 	match NO_SKIN free hand
-	matchre K_SKIN_EQUIP_OFFHAND2 /out of reach|remove|What were you|can't seem|Wield what\?|You can only wield a weapon or a shield/i
+	matchre K_SKIN_EQUIP_OFFHAND2 /out of reach|remove|already w|What were you|can't seem|Wield what\?|You can only wield a weapon or a shield/i
 put wield left my %1
 	matchwait
 
@@ -12403,9 +12474,9 @@ K_SKIN_RE_EQUIP_0:
 	echo K_SKIN_RE_EQUIP_0:
 	echo
 	match K_SEARCH you draw
-	match K_SEARCH already
+	match K_SEARCH already h
 	match NO_SKIN free to
-	matchre K_SKIN_RE_EQUIP3 /out of reach|remove|What were you|can't seem|Wield what\?/i
+	matchre K_SKIN_RE_EQUIP3 /out of reach|remove|already w|What were you|can't seem|Wield what\?/i
 	match K_SKIN_RE_EQUIP3 You can only wield a weapon or a shield!
 	match K_SKIN_RE_EQUIP2_PAUSE ...wait
 	match K_SKIN_RE_EQUIP2_PAUSE type ahead
@@ -12473,9 +12544,9 @@ SKIN_RE_EQUIP_OFFHAND:
 	echo
 	match SEARCH you draw
 	match SEARCH free to
-	match SEARCH re already
+	match SEARCH re already h
 	match NO_SKIN free hand
-	matchre SKIN_EQUIP_OFFHAND2 /out of reach|remove|What were you|can't seem|Wield what\?|You can only wield a weapon or a shield/i
+	matchre SKIN_EQUIP_OFFHAND2 /out of reach|remove|already w|What were you|can't seem|Wield what\?|You can only wield a weapon or a shield/i
 put wield left my %1
 	matchwait
 
@@ -12530,9 +12601,9 @@ SKIN_RE_EQUIP_0:
 	echo SKIN_RE_EQUIP_0:
 	echo
 	match K_SEARCH you draw
-	match K_SEARCH re already
+	match K_SEARCH re already h
 	match NO_SKIN free to
-	matchre SKIN_RE_EQUIP3 /out of reach|remove|What were you|can't seem|Wield what\?/i
+	matchre SKIN_RE_EQUIP3 /out of reach|remove|already w|What were you|can't seem|Wield what\?/i
 	match SKIN_RE_EQUIP3 You can only wield a weapon or a shield!
 	match SKIN_RE_EQUIP2_PAUSE ...wait
 	match SKIN_RE_EQUIP2_PAUSE type ahead
@@ -12599,7 +12670,7 @@ SEARCH:
 	match SEARCH_NEXT not dead
 	match SEARCH_NEXT It's still alive
 	match NO_LOOT picked clean
-	match NO_LOOT It carried nothing of interest.
+	match NO_LOOT nothing of interest.
 	match LOOT_LOOK You search
 	match LOOT_LOOK roundtime
 	match SEARCH_PAUSE ...wait
@@ -12607,6 +12678,25 @@ SEARCH:
 	match SEARCH_PAUSE roundtime
 put loot %zHsearch
 	matchwait
+goto SEARCH_BOX_%zHlootbox
+
+SEARCH_BOX_0:
+	matchre LOOT_BOXES / strongbox,| strongbox\.| strongbox and | coffer,| coffer\.| coffer and | chest,| chest\.| chest and | caddy,| caddy\.| caddy and | casket,| casket\.| casket and | trunk,| trunk\.| trunk and | skippet,| skippet\.| skippet and | crate,| crate\.| crate and | box,| box\.| box and /i
+SEARCH_BOX_1:
+goto SEARCH_GEM_%zHlootgem
+
+SEARCH_GEM_0:
+	matchre LOOT_GEMS / carnelian,| carnelian\.| carnelian and | chrysoprase,| chrysoprase\.| chrysoprase and | amber,| amber\.| amber and | kunzite,| kunzite\.| kunzite and | iolite,| iolite\.| iolite and | coral,| coral\.| coral and | ivory,| ivory\.| ivory and | spinel,| spinel\.| spinel and | onyx,| onyx\.| onyx and | garnet,| garnet\.| garnet and | chalcedony,| chalcedony\.| chalcedony and | lazuli,| lazuli\.| lazuli and | star-stone,| star-stone\.| star-stone and | sunstone,| sunstone\.| sunstone and | moonstone,| moonstone\.| moonstone and | hematite,| hematite\.| hematite and | tanzanite,| tanzanite\.| tanzanite and | turquoise,| turquoise\.| turquoise and | peridot,| peridot\.| peridot and | beryl,| beryl\.| beryl and | andalusite,| andalusite\.| andalusite and | agate,| agate\.| agate and | jade,| jade\.| jade and | citrine,| citrine\.| citrine and | aquamarine,| aquamarine\.| aquamarine and /i
+#added Above gems - TY Storrmm Wyndrydor
+	matchre LOOT_GEMS / pearl,| pearl\.| pearl and | sapphire,| sapphire\.| sapphire and | opal,| opal\.| opal and | bloodstone,| bloodstone\.| bloodstone and | nugget,| nugget\.| nugget and | zircon,| zircon\.| zircon and | amethyst,| amethyst\.| amethyst and | quartz,| quartz\.| quartz and | jasper,| jasper\.| jasper and | bloodgem,| bloodgem\.| bloodgem and | crystal,| crystal\.| crystal and | topaz,| topaz\.| topaz and | ruby,| ruby\.| ruby and | diopside,| diopside\.| diopside and | gem,| gem\.| gem and | emerald,| emerald\.| emerald and | diamond,| diamond\.| diamond and | stone,| stone\.| stone and | stones,| stones\.| stones and /i
+SEARCH_GEM_1:
+goto SEARCH_COIN_%zHlootcoin
+
+SEARCH_COIN_0:
+	matchre LOOT_COIN / coin,| coins,| coin\.| coin and | coins\.| coins and /i
+
+SEARCH_COIN_1:
+	match LOOT_LOOK was carrying
 
 SEARCH_NEXT_PAUSE:
 pause
@@ -12619,7 +12709,7 @@ SEARCH_NEXT:
 	match SEARCH_NEXT2 not dead
 	match SEARCH_NEXT2 It's still alive
 	match NO_LOOT picked clean
-	match NO_LOOT It carried nothing of interest.
+	match NO_LOOT nothing of interest.
 	match LOOT_LOOK You search
 	match LOOT_LOOK roundtime
 	match SEARCH_NEXT_PAUSE ...wait
@@ -12639,7 +12729,7 @@ SEARCH_NEXT2:
 	match NO_LOOT not dead
 	match NO_LOOT It's still alive
 	match NO_LOOT picked clean
-	match NO_LOOT It carried nothing of interest.
+	match NO_LOOT nothing of interest.
 	match LOOT_LOOK You search
 	match LOOT_LOOK roundtime
 	match SEARCH_NEXT2_PAUSE ...wait
@@ -12659,7 +12749,7 @@ SEARCH_NEXT_NOSKIN:
 	match SEARCH_NOSKIN_NEXT2 not dead
 	match SEARCH_NOSKIN_NEXT2 It's still alive
 	match NO_LOOT picked clean
-	match NO_LOOT It carried nothing of interest.
+	match NO_LOOT nothing of interest.
 	match LOOT_LOOK You search
 	match LOOT_LOOK roundtime
 	match SEARCH_NEXT_NOSKIN_PAUSE ...wait
@@ -12679,7 +12769,7 @@ SEARCH_NEXT2_NOSKIN:
 	match NO_LOOT not dead
 	match NO_LOOT It's still alive
 	match NO_LOOT picked clean
-	match NO_LOOT It carried nothing of interest.
+	match NO_LOOT nothing of interest.
 	match LOOT_SEARCH You search
 	match LOOT_SEARCH roundtime
 	match SEARCH_NEXT_PAUSE ...wait
@@ -12988,7 +13078,7 @@ COIN_1:
 	matchre LOOT_TABLET / tablet,| tablet\.| tablet and /i
 	matchre NO_LOOT /Encumbrance :|paths:|exits:/i
 	matchre NO_LOOT_DARK /and you can't see a thing|Your world is a crimson haze/i
-put look other
+put look
 put encum
 	matchwait
 
@@ -13719,13 +13809,15 @@ LOOT_STOW:
 put stow %s
 	matchwait
 
-
+LOOT_COIN_PAUSE:
+pause
 LOOT_COIN:
-put get coin
-waitfor you
-put get coin
-waitfor you
-	goto LOOTING_PAUSE
+	match LOOT_COIN_PAUSE ...wait
+	match LOOT_COIN_PAUSE type ahead
+	match LOOT_COIN You pick up
+	match LOOTING_PAUSE I could not find
+put loot coin
+	matchwait
 
 LOOT_LOOK_NO:
 	echo
@@ -14278,6 +14370,7 @@ COM1_PAUSE:
 pause
 COM1_ON:
 	matchre COM1_PAUSE /\.\.\.wait|type ahead/i
+	match COM1_OFF Roundtime:
 	match COM1_OFF Encumbrance :
 put %zHcom1
 put encum
@@ -14289,6 +14382,7 @@ COM2_PAUSE:
 pause
 COM2_ON:
 	matchre COM2_PAUSE /\.\.\.wait|type ahead/i
+	match COM2_OFF Roundtime:
 	match COM2_OFF Encumbrance :
 put %zHcom2
 put encum
@@ -14300,6 +14394,7 @@ COM3_PAUSE:
 pause
 COM3_ON:
 	matchre COM3_PAUSE /\.\.\.wait|type ahead/i
+	match COM3_OFF Roundtime:
 	match COM3_OFF Encumbrance :
 put %zHcom3
 put encum
@@ -14311,6 +14406,7 @@ COM4_PAUSE:
 pause
 COM4_ON:
 	matchre COM4_PAUSE /\.\.\.wait|type ahead/i
+	match COM4_OFF Roundtime:
 	match COM4_OFF Encumbrance :
 put %zHcom4
 put encum
@@ -14322,6 +14418,7 @@ COM5_PAUSE:
 pause
 COM5_ON:
 	matchre COM5_PAUSE /\.\.\.wait|type ahead/i
+	match COM5_OFF Roundtime:
 	match COM5_OFF Encumbrance :
 put %zHcom5
 put encum
@@ -15105,7 +15202,7 @@ DEBUG_MODE:
 	echo ** SITE:  http://www.malific.com/ or http://www.geocities.com/malificdr/
 	echo ** AIM:   Malific Drockmur
 	echo **
-	echo ** SFhunter Version 2: Last tweak 4/16/2009 6:20PM
+	echo ** SFhunter Version 2: Last tweak 5/25/2009 10:52PM
 	echo **
 	echo **************************************************************************************
 	echo
